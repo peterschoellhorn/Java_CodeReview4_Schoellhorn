@@ -17,11 +17,6 @@ public class Product {
   public Product(String productName, String productDescription, double productPrice,
                  Category productCategory) {
 
-    int newAmount=(Shop.inventory.get(this) + inStock);
-    if (newAmount>15) {
-      throw new ArithmeticException("Max stock capacity reached, please add no more than: " + (15 - newAmount));
-    }
-    Shop.inventory.replace(this, newAmount);
 
     this.productId=(++tempId);
     this.productName = productName;

@@ -49,3 +49,4 @@ public class UserInterface {
   }
 
 }
+Main.productDatabase.forEach(Product -> System.out.println(Product.getProductName()+" ")

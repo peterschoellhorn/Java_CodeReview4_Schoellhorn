@@ -9,7 +9,7 @@ public class User {
   private int zip;
   private String city;
   private String phone;
-  private ArrayList<String>purchaseHistory;
+  private ArrayList<Product>purchaseHistory;
   private static int tempId = 100;
 
   public User(String firstName, String lastName, String eMail, String address, int zip, String city, String phone) {
@@ -21,6 +21,7 @@ public class User {
     this.zip = zip;
     this.city=city;
     this.phone = phone;
+    this.purchaseHistory = getPurchaseHistory();
   }
 
   public int getUserId() {
@@ -87,12 +88,28 @@ public class User {
     this.phone = phone;
   }
 
-  public ArrayList<String> getPurchaseHistory() {
+  public ArrayList<Product> getPurchaseHistory() {
     return purchaseHistory;
   }
 
-  public void setPurchaseHistory(ArrayList<String> purchaseHistory) {
+  public void setPurchaseHistory(ArrayList<Product> purchaseHistory) {
     this.purchaseHistory = purchaseHistory;
   }
-}
+
+  public static void purchase(User user,Product item, int amount) {
+    user.purchaseHistory.add(item);
+
+    if ((Shop.getInventory().get(item) - amount) <= 0)
+      throw new ArithmeticException("SORRY, OUT OF STOCK");
+
+    else {Shop.getInventory().replace(item, (Shop.getInventory().get(item) - amount));
+      if ((Shop.getInventory().get(item) - amount) < 5)
+        System.out.println("PURCHASED by:\n"+user.getFirstName()+" "+user.lastName);
+      System.out.println("ATTENTION - STOCK BELOW 5\n" + "Stock: " + (Shop.getInventory().get(item)));}
+  }
+
+
+
+  }
+
 

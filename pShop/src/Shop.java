@@ -1,16 +1,21 @@
 import java.util.HashMap;
 
 public class Shop {
+
   private String name;
   private String address;
-  private int inStock;
+  private int zip;
+  private String city;
+  static Shop shop1 = new Shop("NEEDFUL THINGS, MAIN SHOP","Linke Wienzeile 1, Naschmarkt",1050,"Vienna");
+
   private static HashMap<Product, Integer> inventory;
 
 
-  public Shop(String name, String address, int inStock) {
+  public Shop(String name, String address, int zip, String city) {
     this.name = name;
     this.address = address;
-    this.inStock = inStock;
+    this.zip = zip;
+    this.city = city;
   }
 
   public String getName() {
@@ -29,12 +34,20 @@ public class Shop {
     this.address = address;
   }
 
-  public int getInStock() {
-    return inStock;
+  public int getZip() {
+    return zip;
   }
 
-  public void setInStock(int inStock) {
-    this.inStock = inStock;
+  public void setZip(int zip) {
+    this.zip = zip;
+  }
+
+  public String getCity() {
+    return city;
+  }
+
+  public void setCity(String city) {
+    this.city = city;
   }
 
   public static HashMap<Product, Integer> getInventory() {
@@ -44,4 +57,23 @@ public class Shop {
   public static void setInventory(HashMap<Product, Integer> inventory) {
     Shop.inventory = inventory;
   }
-}
+
+
+
+  public static void addtoInventory(int id, int quantity) throws StockLimitReachedException {
+    inventory = getInventory();
+    Product product = Main.productDatabase.get(id);
+    int newStock=inventory.get(product)+quantity;
+
+      if (newStock > 15) {
+        inventory.replace(product, inventory.get(product), (newStock - 15));
+        throw new StockLimitReachedException("MAX CAPACITY REACHED!\n" +
+            "ADDING " + (newStock - 15) + " INSTEAD.");
+      } else inventory.replace(product, inventory.get(product), newStock);
+    }
+
+  }
+
+
+
+
