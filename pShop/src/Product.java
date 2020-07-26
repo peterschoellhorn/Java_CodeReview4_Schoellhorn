@@ -1,16 +1,21 @@
+import java.util.ArrayList;
+
 public class Product {
 
   private int productId;
   private String productName;
   private String productDescription;
   private double productPrice;
-  private int inStock;
+  private Integer inStock;
   private final Category productCategory;
   private static int tempId = 0;
 
+  static ArrayList<Product> clothes;
+  static ArrayList<Product> shoes;
+  static ArrayList<Product> eyewear;
+  static ArrayList<Product> other;
 
-
-  public enum Category {CLOTHES,SHOES,ACCESSORIES,OTHER}
+  public enum Category {CLOTHES,SHOES,EYEWEAR,OTHER}
 
 //  constructor
 
@@ -24,8 +29,10 @@ public class Product {
     this.productPrice = productPrice;
     this.productCategory=productCategory;
 
-
-
+    if (this.productCategory==Category.CLOTHES)     clothes.add(this);
+    if (this.productCategory==Category.SHOES)       shoes.add(this);
+    if (this.productCategory==Category.EYEWEAR)     eyewear.add(this);
+    if (this.productCategory==Category.OTHER)       other.add(this);
   }
 
 //  get and set methods

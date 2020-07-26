@@ -1,8 +1,11 @@
-import java.util.Scanner;
+import java.lang.reflect.Array;
+import java.util.*;
 
 public class UserInterface {
 
-  public userInterface() {
+
+
+  public userInterface( HashMap<Integer, Product> productDatabase, Product product, Product Category, Shop shop1) {
 
     String menu=
 
@@ -40,12 +43,50 @@ public class UserInterface {
           toContinue = false;
           break;
         case 1:
+          System.out.println("LIST OF ALL PRODUCTS");
+          for(int i : productDatabase.keySet()){
+            System.out.println(productDatabase.get(i).toString());
+          }
+          break;
         case 2:
+          System.out.println("CHOOSE CATEGORY: ");
+          System.out.println("1)   "+(Product.Category.CLOTHES.toString()));
+          System.out.println("2)   "+(Product.Category.SHOES.toString()));
+          System.out.println("3)   "+(Product.Category.EYEWEAR.toString()));
+          System.out.println("4)   "+(Product.Category.OTHER.toString()));
+          int category = inputScanner.nextInt();
+          if (category==1){
+            for (int i = 0; i < Product.clothes.size(); i++) System.out.println(Product.clothes.get(i).toString());
+          }
+          if (category==2){
+            for (int i = 0; i < Product.shoes.size(); i++) System.out.println(Product.shoes.get(i).toString());
+          }
+          if (category==3){
+            for (int i = 0; i < Product.eyewear.size(); i++) System.out.println(Product.eyewear.get(i).toString());
+          }
+          if (category==4){
+            for (int i = 0; i < Product.other.size(); i++) System.out.println(Product.other.get(i).toString());
+          }
+        case 3:
+
+          for (int i = 0; i < Shop.getInventory().size(); i++)
+            if((Shop.getInventory().get(i))<5) System.out.println(Shop.getInventory()..)
+
+          int stock2 =Integer.parseInt(stock1);
+           {
+
+
+          System.out.println();
+          }
         case 3:
         case 4:
       }
 
 
+
+    }
+
+    }
   }
 
 }
