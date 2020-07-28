@@ -6,7 +6,7 @@ public class UserInterface {
 
 
   public void userInterface( HashMap<Integer, Product> productDatabase, HashMap<Product, Integer> inventory,
-                        ArrayList<Product>purchaseHistory) throws StockLimitReachedException {
+                        ArrayList<Product>purchaseHistory,HashMap<Integer, User> customerDatabase) throws StockLimitReachedException {
 
     String menu =
 
@@ -35,7 +35,7 @@ public class UserInterface {
 
     String subMenu =
 
-        "+---------------------------------------------+\n" +
+            "+---------------------------------------------+\n" +
             "|       BACKEND SHOP ADMIN SYSTEM V 0.9       |\n" +
             "|---------------------------------------------|\n" +
             "|                                             |\n" +

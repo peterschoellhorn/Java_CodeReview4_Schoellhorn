@@ -5,7 +5,7 @@ public class Main {
 
   public static HashMap<Integer, User> customerDatabase = new HashMap<>();
   public static HashMap<Integer, Product> productDatabase = new HashMap<>();
-
+  public static ArrayList<Product> clothes =new ArrayList<>();
 
 
 
@@ -65,7 +65,7 @@ public class Main {
     Main.createCustomerDatabase();
     UserInterface inteface=new UserInterface();
     inteface.userInterface(productDatabase,Shop.inventory,
-        User.purchaseHistory);
+        User.purchaseHistory,HashMap<Integer, User> customerDatabase);
 }}
 
 
