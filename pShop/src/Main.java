@@ -62,7 +62,7 @@ public class Main {
   }
 
   public static void main(String[] args) throws StockLimitReachedException {
-
+    Product.createSortArrays();
     Main.createProductDatabase();
     Main.createCustomerDatabase();
     UserInterface.userInterface();
