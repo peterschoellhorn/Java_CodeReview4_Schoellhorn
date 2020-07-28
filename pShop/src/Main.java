@@ -2,8 +2,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Main {
-  public static HashMap<Integer, Product> productDatabase;
-  public static HashMap<Integer, User> customerDatabase;
+
+  public static HashMap<Integer, User> customerDatabase = new HashMap<>();
+  public static HashMap<Integer, Product> productDatabase = new HashMap<>();
+
 
 
 
@@ -33,8 +35,7 @@ public class Main {
         11149,
         Product.Category.OTHER);
 
-    HashMap<Integer, Product> productDatabase = new HashMap<>();
-    ArrayList<Product> clothes =new ArrayList<>();
+
 
 
 
@@ -51,7 +52,7 @@ public class Main {
         "+436769683084");
     User user2 = new User ("Suzanne","C.","sz@gmail.com","Fendigasse",1050,"Vienna","NOT PROVIDED");
 
-    HashMap<Integer, User> customerDatabase = new HashMap<>();
+
     customerDatabase.put(user1.getUserId(),user1);
     customerDatabase.put(user2.getUserId(),user2);
 
@@ -60,8 +61,8 @@ public class Main {
 
   public static void main(String[] args) throws StockLimitReachedException {
 
-    createProductDatabase();
-    createCustomerDatabase();
+    Main.createProductDatabase();
+    Main.createCustomerDatabase();
     UserInterface inteface=new UserInterface();
     inteface.userInterface(productDatabase,Shop.inventory,
         User.purchaseHistory);

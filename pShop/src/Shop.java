@@ -81,23 +81,20 @@ public class Shop {
 
 
   public static void checkLowStock() {
-    for (int i = 0; i < inventory.size(); i++) {
-      inventory = getInventory();
+
+    inventory = getInventory();
+    for (int i = 0; i < getInventory().size(); i++) {
       Product product = Main.productDatabase.get(i);
       int stock = inventory.get(product);
-
       if (stock < 5) {
         System.out.println("ATTN: " + product + " is low on Stock\n" + stock + " left");}
     }
   }
   public static void checkEmptyStock () {
-    for (int i = 0; i < inventory.size(); i++) {
-
-
-      inventory = getInventory();
+    inventory = getInventory();
+    for (int i = 0; i < getInventory().size(); i++) {
       Product product = Main.productDatabase.get(i);
       int stock = inventory.get(product);
-
       if (stock < 5) {
         System.out.println("ATTN: " + product + " is low on Stock\n" + stock + " left");}
     }

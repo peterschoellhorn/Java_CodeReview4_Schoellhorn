@@ -10,10 +10,11 @@ public class Product {
   private final Category productCategory;
   private static int tempId = 0;
 
-  static ArrayList<Product> clothes;
-  static ArrayList<Product> shoes;
-  static ArrayList<Product> eyewear;
-  static ArrayList<Product> other;
+  public static ArrayList<Product> clothes=new ArrayList<>();
+  public static ArrayList<Product> shoes=new ArrayList<>();
+  public static ArrayList<Product> eyewear=new ArrayList<>();
+  public static ArrayList<Product> other=new ArrayList<>();
+
 
   public enum Category {CLOTHES,SHOES,EYEWEAR,OTHER}
 

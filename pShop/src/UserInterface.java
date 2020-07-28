@@ -84,7 +84,9 @@ public class UserInterface {
         case 1:
           System.out.println("LIST OF ALL PRODUCTS");
           for (int i : productDatabase.keySet()) {
-            System.out.println("*"+productDatabase.get(i).toString()+"\n");
+            String pr =productDatabase.get(i).toString();
+            System.out.println("*" + pr + "\n");
+            inputScanner.close();
           }
           break;
         case 2:
@@ -97,13 +99,13 @@ public class UserInterface {
           int subInput = inputScanner.nextInt();
           switch (subInput) {
             case 1:
-              System.out.println(Product.Category.CLOTHES.toString());
+              for (int i = 0; i < Product.clothes.size(); i++) System.out.println(Product.clothes.get(i).toString());
             case 2:
-              System.out.println(Product.Category.SHOES.toString());
+              for (int i = 0; i < Product.shoes.size(); i++) System.out.println(Product.shoes.get(i).toString());
             case 3:
-              System.out.println(Product.Category.EYEWEAR.toString());
+              for (int i = 0; i < Product.eyewear.size(); i++) System.out.println(Product.eyewear.get(i).toString());
             case 4:
-              System.out.println(Product.Category.OTHER.toString());
+              for (int i = 0; i < Product.other.size(); i++) System.out.println(Product.other.get(i).toString());
             inputScanner.close();
             break;
           }
