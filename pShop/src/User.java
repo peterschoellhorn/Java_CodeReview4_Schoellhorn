@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class User {
   private int userId;
@@ -9,26 +10,29 @@ public class User {
   private int zip;
   private String city;
   private String phone;
-  private ArrayList<Product>purchaseHistory;
+  public ArrayList<Product> purchaseHistory;
+
+  public User user;
   private static int tempId = 100;
 
-  public User(String firstName, String lastName, String eMail, String address, int zip, String city, String phone) {
-    this.userId=(++tempId);
+  public User( String firstName, String lastName, String eMail, String address, int zip, String city, String phone ) {
+    this.userId = (++tempId);
     this.firstName = firstName;
     this.lastName = lastName;
     this.eMail = eMail;
     this.address = address;
     this.zip = zip;
-    this.city=city;
+    this.city = city;
     this.phone = phone;
-    this.purchaseHistory = getPurchaseHistory();
+
+    Main.customerDatabase.put(this.getUserId(), this);
   }
 
   public int getUserId() {
     return userId;
   }
 
-  public void setUserId(int userId) {
+  public void setUserId( int userId ) {
     this.userId = userId;
   }
 
@@ -36,7 +40,7 @@ public class User {
     return firstName;
   }
 
-  public void setFirstName(String firstName) {
+  public void setFirstName( String firstName ) {
     this.firstName = firstName;
   }
 
@@ -44,7 +48,7 @@ public class User {
     return lastName;
   }
 
-  public void setLastName(String lastName) {
+  public void setLastName( String lastName ) {
     this.lastName = lastName;
   }
 
@@ -52,7 +56,7 @@ public class User {
     return eMail;
   }
 
-  public void seteMail(String eMail) {
+  public void seteMail( String eMail ) {
     this.eMail = eMail;
   }
 
@@ -60,7 +64,7 @@ public class User {
     return address;
   }
 
-  public void setAddress(String address) {
+  public void setAddress( String address ) {
     this.address = address;
   }
 
@@ -68,7 +72,7 @@ public class User {
     return zip;
   }
 
-  public void setZip(int zip) {
+  public void setZip( int zip ) {
     this.zip = zip;
   }
 
@@ -76,7 +80,7 @@ public class User {
     return city;
   }
 
-  public void setCity(String city) {
+  public void setCity( String city ) {
     this.city = city;
   }
 
@@ -84,7 +88,7 @@ public class User {
     return phone;
   }
 
-  public void setPhone(String phone) {
+  public void setPhone( String phone ) {
     this.phone = phone;
   }
 
@@ -92,24 +96,62 @@ public class User {
     return purchaseHistory;
   }
 
-  public void setPurchaseHistory(ArrayList<Product> purchaseHistory) {
+  public void setPurchaseHistory( ArrayList<Product> purchaseHistory ) {
     this.purchaseHistory = purchaseHistory;
   }
 
-  public static void purchase(User user,Product item, int amount) {
-    user.purchaseHistory.add(item);
+
+  public static void createCustomerDatabase() {
+    User user1 = new User("Peter", "Schoellhorn", "peter@schoellhorn.at", "Obere Amtshausgasse 20", 1050, "Vienna",
+        "+436769683084");
+    User user2 = new User("Suzanne", "C.", "sz@gmail.com", "Fendigasse", 1050, "Vienna", "NOT PROVIDED");
+
+    HashMap<Integer, User> customerDatabase = new HashMap<>();
+    customerDatabase.put(user1.getUserId(), user1);
+    customerDatabase.put(user2.getUserId(), user2);
+
+  }
+
+  public static void createUser( String firstName, String lastName, String eMail, String address, int zip, String city,
+                                 String phone ) {
+    new User(firstName, lastName, eMail, address, zip, city, phone);
+    System.out.println("|| YAY, CUSTOMER SUCCESSFULLY ADDED :) ||\n");
+  }
+
+  public static void purchase( int userId, int itemId, int amount ) {
+    User customer=Main.customerDatabase.get(userId);
+    Product product = Main.productDatabase.get(itemId);
+    customer.purchaseHistory.add(product);
+
+    if ((Shop.getInventory().get(product) - amount) <= 0)
+      throw new ArithmeticException("SORRY, OUT OF STOCK");
+
+    else {
+      Shop.getInventory().replace(product, (Shop.getInventory().get(product) - amount));
+      if ((Shop.getInventory().get(product) - amount) < 5)
+        System.out.println("PURCHASED by:\n" + customer.getFirstName() + " " + customer.getLastName());
+      System.out.println("ATTENTION - STOCK BELOW 5\n" + "Stock: " + (Shop.getInventory().get(product)));
+    }
+  }
+}
+
+
+
+
+
+/*  public static void purchase2( int id, int quantity, String lname){
+    Shop.getInventory();
+    Product product = Main.productDatabase.get(id);
+    int newStock = Shop.getInventory().get(product) + quantity;
+
+     purchaseHistory.add(product);
 
     if ((Shop.getInventory().get(item) - amount) <= 0)
       throw new ArithmeticException("SORRY, OUT OF STOCK");
 
     else {Shop.getInventory().replace(item, (Shop.getInventory().get(item) - amount));
-      if ((Shop.getInventory().get(item) - amount) < 5)
-        System.out.println("PURCHASED by:\n"+user.getFirstName()+" "+user.lastName);
-      System.out.println("ATTENTION - STOCK BELOW 5\n" + "Stock: " + (Shop.getInventory().get(item)));}
-  }
-
-
-
-  }
-
+    if ((Shop.getInventory().get(item) - amount) < 5)
+      System.out.println("PURCHASED by:\n"+user.getFirstName()+" "+user.lastName);
+    System.out.println("ATTENTION - STOCK BELOW 5\n" + "Stock: " + (Shop.getInventory().get(item)));}
+}}*/
 

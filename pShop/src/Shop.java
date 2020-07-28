@@ -1,4 +1,7 @@
+
+
 import java.util.HashMap;
+import java.util.Map;
 
 public class Shop {
 
@@ -8,7 +11,7 @@ public class Shop {
   private String city;
   static Shop shop1 = new Shop("NEEDFUL THINGS, MAIN SHOP", "Linke Wienzeile 1, Naschmarkt", 1050, "Vienna");
 
-  private static HashMap<Product, Integer> inventory;
+  public static HashMap<Product, Integer> inventory;
 
 
   public Shop( String name, String address, int zip, String city ) {
@@ -67,10 +70,36 @@ public class Shop {
     if (newStock > 15) {
       inventory.put(product, (newStock - 15));
       throw new StockLimitReachedException("MAX CAPACITY REACHED!\n" +
-          "ADDING " + (newStock - 15) + " INSTEAD.");
+          "ADDING " + (newStock - 15) + " INSTEAD.\n"+ "|OLD STOCK OF "
+          +product+ "  |  " + inventory.get(product) +
+          "|\n" + "|CURRENT STOCK OF " +product+ "  |  " + newStock + "|\n");
     } else inventory.put(product, newStock);
+      System.out.println("|| PRODUCT SUCCESSFULLY ADDED TO SHOP :) ||\n");
+      System.out.println("|OLD STOCK OF " +product+ "  |  " + inventory.get(product) + "|\n");
+      System.out.println("|CURRENT STOCK OF " +product+ "  |  " + newStock + "|\n");
   }
-}
 
 
+  public static void checkLowStock() {
+    for (int i = 0; i < inventory.size(); i++) {
+      inventory = getInventory();
+      Product product = Main.productDatabase.get(i);
+      int stock = inventory.get(product);
 
+      if (stock < 5) {
+        System.out.println("ATTN: " + product + " is low on Stock\n" + stock + " left");}
+    }
+  }
+  public static void checkEmptyStock () {
+    for (int i = 0; i < inventory.size(); i++) {
+
+
+      inventory = getInventory();
+      Product product = Main.productDatabase.get(i);
+      int stock = inventory.get(product);
+
+      if (stock < 5) {
+        System.out.println("ATTN: " + product + " is low on Stock\n" + stock + " left");}
+    }
+  }
+  }

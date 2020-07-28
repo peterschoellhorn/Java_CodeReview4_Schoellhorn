@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 public class Product {
 
-  private int productId;
+  private int productId=0;
   private String productName;
   private String productDescription;
   private double productPrice;
@@ -33,16 +33,16 @@ public class Product {
     if (this.productCategory==Category.SHOES)       shoes.add(this);
     if (this.productCategory==Category.EYEWEAR)     eyewear.add(this);
     if (this.productCategory==Category.OTHER)       other.add(this);
+
+    Main.productDatabase.put(this.productId, this); // putting obj directly into hashmap without needing a refernece VAR
   }
+
+
 
 //  get and set methods
 
   public int getProductId() {
     return productId;
-  }
-
-  public void setProductId(int productId) {
-    this.productId = productId;
   }
 
   public String getProductName() {
@@ -80,5 +80,7 @@ public class Product {
   public Category getProductCategory() {
     return productCategory;
   }
+
+
 
 }

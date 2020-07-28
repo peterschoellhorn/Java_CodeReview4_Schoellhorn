@@ -2,9 +2,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Main {
-  static HashMap<Integer, Product> productDatabase;
+  public static HashMap<Integer, Product> productDatabase;
+  public static HashMap<Integer, User> customerDatabase;
 
-  //public Array keyArray;
+
 
 
 
@@ -41,8 +42,8 @@ public class Main {
     productDatabase.put(boots.getProductId(),boots);
     productDatabase.put(sunglasses.getProductId(),sunglasses);
     productDatabase.put(watch.getProductId(),watch);
-
-
+    productDatabase.put(tshirt2.getProductId(),tshirt2);
+    productDatabase.put(watch2.getProductId(),watch2);
   }
 
   public static void createCustomerDatabase(){
@@ -61,6 +62,7 @@ public class Main {
 
     createProductDatabase();
     createCustomerDatabase();
+
 
 }}
 
