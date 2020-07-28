@@ -65,7 +65,7 @@ public class Main {
     Main.createCustomerDatabase();
     UserInterface inteface=new UserInterface();
     inteface.userInterface(productDatabase,Shop.inventory,
-        User.purchaseHistory,HashMap<Integer, User> customerDatabase);
+        User.purchaseHistory, customerDatabase);
 }}
 
 
