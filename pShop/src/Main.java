@@ -3,8 +3,8 @@ import java.util.HashMap;
 
 public class Main {
 
-  public static HashMap<Integer, User> customerDatabase = new HashMap<>();
-  public static HashMap<Integer, Product> productDatabase = new HashMap<>();
+  public static HashMap<Integer, User> customerDatabase;
+  public static HashMap<Integer, Product> productDatabase;
   public static ArrayList<Product> clothes =new ArrayList<>();
 
 
@@ -12,6 +12,7 @@ public class Main {
 
 
   public static void createProductDatabase() {
+    productDatabase = new HashMap<>();
     Product tshirt =
         new Product("T-SHIRT PLAIN UNISIZE", "white tshirt, v-neck, 100% cotton, plain white, unisize", 19.90,
             Product.Category.CLOTHES);
@@ -48,6 +49,7 @@ public class Main {
   }
 
   public static void createCustomerDatabase(){
+    customerDatabase = new HashMap<>();
     User user1 = new User("Peter","Schoellhorn","peter@schoellhorn.at","Obere Amtshausgasse 20",1050,"Vienna",
         "+436769683084");
     User user2 = new User ("Suzanne","C.","sz@gmail.com","Fendigasse",1050,"Vienna","NOT PROVIDED");
@@ -63,8 +65,7 @@ public class Main {
 
     Main.createProductDatabase();
     Main.createCustomerDatabase();
-    UserInterface inteface=new UserInterface();
-    inteface.userInterface(productDatabase,Shop.inventory, User.purchaseHistory, customerDatabase);
+    new UserInterface();
 }}
 
 

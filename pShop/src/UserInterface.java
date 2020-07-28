@@ -5,8 +5,7 @@ public class UserInterface {
 
 
 
-  public void userInterface( HashMap<Integer, Product> productDatabase, HashMap<Product, Integer>inventory,
-                        ArrayList<Product>purchaseHistory,HashMap<Integer, User>customerDatabase) throws StockLimitReachedException {
+  public void userInterface() throws StockLimitReachedException {
 
     String menu =
 
@@ -83,8 +82,8 @@ public class UserInterface {
           break;
         case 1:
           System.out.println("LIST OF ALL PRODUCTS");
-          for (int i : productDatabase.keySet()) {
-            String pr =productDatabase.get(i).getProductName();
+          for (int i : Main.productDatabase.keySet()) {
+            String pr =Main.productDatabase.get(i).getProductName();
             System.out.println("*" + pr + "\n");
             inputScanner.close();
           }
@@ -133,7 +132,7 @@ public class UserInterface {
         case 6:
           System.out.println("|| ADD A PRODUCT FROM DATABASE TO YOUR SHOP INVENTORY ||\n");
           System.out.println("|PLEASE ENTER ID OF THE PRODUCT YOU WANT TO ADD AND PRESS ENTER|\n");
-          productDatabase.forEach((key, value) -> System.out.println(key+" | "+value.getProductName()+"\n"));
+          Main.productDatabase.forEach((key, value) -> System.out.println(key+" | "+value.getProductName()+"\n"));
           inputScanner=new Scanner(System.in);
           int id = inputScanner.nextInt();
           System.out.println("|PLEASE ENTER ITEM QUANTITY YOU WANT TO ADD TO INVENTORY AND PRESS ENTER|\n");
@@ -179,7 +178,7 @@ public class UserInterface {
           inputScanner=new Scanner(System.in);
           int userId2 = inputScanner.nextInt();
           System.out.println("|PLEASE ENTER ID OF PURCHASED ITEM(S) AND PRESS ENTER| \n");
-          productDatabase.forEach((key, value) -> System.out.println(key+" | "+value+"\n"));
+          Main.productDatabase.forEach((key, value) -> System.out.println(key+" | "+value+"\n"));
           int itemId = inputScanner.nextInt();
           System.out.println("|PLEASE ENTER AMOUNT OF PURCHASED ITEM(S) AND PRESS ENTER| \n");
           int amount = inputScanner.nextInt();
