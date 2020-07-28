@@ -11,7 +11,7 @@ public class Shop {
   private String city;
   static Shop shop1 = new Shop("NEEDFUL THINGS, MAIN SHOP", "Linke Wienzeile 1, Naschmarkt", 1050, "Vienna");
 
-  public static HashMap<Product, Integer> inventory;
+  public static HashMap<Product, Integer> inventory= new HashMap<>();
 
 
   public Shop( String name, String address, int zip, String city ) {

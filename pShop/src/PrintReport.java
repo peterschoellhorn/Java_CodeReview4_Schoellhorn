@@ -30,7 +30,7 @@ public class PrintReport {
       file.write(customer.getFirstName());
       file.write(customer.getLastName());
       file.write("USER ID: " + customer.getUserId());
-      while (i < customer.purchaseHistory.size()) {
+      while (i < User.purchaseHistory.size()) {
 
         file.write(customer.getPurchaseHistory().get(i).toString());
         ++i;
@@ -72,7 +72,7 @@ public class PrintReport {
       file.write("USER ID: " + customer.getUserId());
       while (i < customer.getPurchaseHistory().size()) {
 
-        file.write(customer.purchaseHistory.get(i).toString()+"\n");
+        file.write(User.purchaseHistory.get(i).toString()+"\n");
         i++;
       }
 

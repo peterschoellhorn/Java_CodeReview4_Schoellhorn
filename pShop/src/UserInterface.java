@@ -5,8 +5,8 @@ public class UserInterface {
 
 
 
-  public void userInterface( HashMap<Integer, Product> productDatabase, HashMap<Product, Integer> inventory,
-                        ArrayList<Product>purchaseHistory,HashMap<Integer, User> customerDatabase) throws StockLimitReachedException {
+  public void userInterface( HashMap<Integer, Product> productDatabase, HashMap<Product, Integer>inventory,
+                        ArrayList<Product>purchaseHistory,HashMap<Integer, User>customerDatabase) throws StockLimitReachedException {
 
     String menu =
 
