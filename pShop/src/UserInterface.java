@@ -84,7 +84,7 @@ public class UserInterface {
         case 1:
           System.out.println("LIST OF ALL PRODUCTS");
           for (int i : productDatabase.keySet()) {
-            String pr =productDatabase.get(i).toString();
+            String pr =productDatabase.get(i).getProductName();
             System.out.println("*" + pr + "\n");
             inputScanner.close();
           }
@@ -133,7 +133,7 @@ public class UserInterface {
         case 6:
           System.out.println("|| ADD A PRODUCT FROM DATABASE TO YOUR SHOP INVENTORY ||\n");
           System.out.println("|PLEASE ENTER ID OF THE PRODUCT YOU WANT TO ADD AND PRESS ENTER|\n");
-          productDatabase.forEach((key, value) -> System.out.println(key+" | "+value+"\n"));
+          productDatabase.forEach((key, value) -> System.out.println(key+" | "+value.getProductName()+"\n"));
           inputScanner=new Scanner(System.in);
           int id = inputScanner.nextInt();
           System.out.println("|PLEASE ENTER ITEM QUANTITY YOU WANT TO ADD TO INVENTORY AND PRESS ENTER|\n");
@@ -164,7 +164,7 @@ public class UserInterface {
           break;
         case 8:
           System.out.println("|PURCHASE HISTORY LOG (ALSO PRINTED TO FILE IN YOUR C:/ MAIN DIR| \n");
-          Main.customerDatabase.forEach((key, value) -> System.out.println(key+" | "+value+"\n"));
+          Main.customerDatabase.forEach((key, value) -> System.out.println(key+" | "+value.getLastName()+"\n"));
           System.out.println("|PLEASE ENTER ID OF CUSTOMER AND PRESS ENTER| \n");
           inputScanner=new Scanner(System.in);
           int userId = inputScanner.nextInt();
@@ -174,7 +174,7 @@ public class UserInterface {
           break;
         case 9:
           System.out.println("|ADD PURCHASE| \n");
-          Main.customerDatabase.forEach((key, value) -> System.out.println(key+" | "+value+"\n"));
+          Main.customerDatabase.forEach((key, value) -> System.out.println(key+" | "+value.getLastName()+"\n"));
           System.out.println("|PLEASE ENTER ID OF CUSTOMER AND PRESS ENTER| \n");
           inputScanner=new Scanner(System.in);
           int userId2 = inputScanner.nextInt();

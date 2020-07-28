@@ -10,8 +10,8 @@ public class User {
   private int zip;
   private String city;
   private String phone;
-  public static ArrayList<Product> purchaseHistory;
-
+  ArrayList<Product> purchaseHistory;
+  public static HashMap<Integer, User> customerDatabase=new HashMap<>();
   public User user;
   private static int tempId = 100;
 
@@ -24,7 +24,7 @@ public class User {
     this.zip = zip;
     this.city = city;
     this.phone = phone;
-
+    this.purchaseHistory=new ArrayList<>();
     Main.customerDatabase.put(this.getUserId(), this);
   }
 
@@ -96,9 +96,7 @@ public class User {
     return purchaseHistory;
   }
 
-  public void setPurchaseHistory( ArrayList<Product> purchaseHistory ) {
-    User.purchaseHistory = purchaseHistory;
-  }
+
 
 
   public static void createCustomerDatabase() {
@@ -106,7 +104,7 @@ public class User {
         "+436769683084");
     User user2 = new User("Suzanne", "C.", "sz@gmail.com", "Fendigasse", 1050, "Vienna", "NOT PROVIDED");
 
-    HashMap<Integer, User> customerDatabase = new HashMap<>();
+
     customerDatabase.put(user1.getUserId(), user1);
     customerDatabase.put(user2.getUserId(), user2);
 
@@ -121,7 +119,7 @@ public class User {
   public static void purchase( int userId, int itemId, int amount ) {
     User customer=Main.customerDatabase.get(userId);
     Product product = Main.productDatabase.get(itemId);
-    purchaseHistory.add(product);
+    customer.purchaseHistory.add(product);
 
     if ((Shop.getInventory().get(product) - amount) <= 0)
       throw new ArithmeticException("SORRY, OUT OF STOCK");
