@@ -38,10 +38,10 @@ public class Product {
     this.productPrice = productPrice;
     this.productCategory=productCategory;
 
-    if (this.productCategory==Category.CLOTHES)     clothes.add(this);
-    if (this.productCategory==Category.SHOES)       shoes.add(this);
-    if (this.productCategory==Category.EYEWEAR)     eyewear.add(this);
-    if (this.productCategory==Category.OTHER)       other.add(this);
+    if (this.productCategory==Product.Category.CLOTHES) {clothes.add(this);}
+    if (this.productCategory==Product.Category.SHOES)   {shoes.add(this);}
+    if (this.productCategory==Product.Category.EYEWEAR) {eyewear.add(this);}
+    if (this.productCategory==Product.Category.OTHER)   {other.add(this);}
 
     Main.productDatabase.put(this.productId, this); // putting obj directly into hashmap without needing a refernece VAR
   }

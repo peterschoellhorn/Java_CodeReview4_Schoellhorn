@@ -97,17 +97,21 @@ public class UserInterface {
           int subInput = subInputScanner.nextInt();
           switch (subInput) {
             case 1:
-              for (int i = 0; i < Product.clothes.size(); i++) System.out.println(Product.clothes.get(i).toString());
+              for (int i = 0; i < Product.clothes.size(); i++) System.out.println(Product.clothes.get(i).getProductName());
             case 2:
-              for (int i = 0; i < Product.shoes.size(); i++) System.out.println(Product.shoes.get(i).toString());
+              for (int i = 0; i < Product.shoes.size(); i++) System.out.println(Product.shoes.get(i).getProductName());
             case 3:
-              for (int i = 0; i < Product.eyewear.size(); i++) System.out.println(Product.eyewear.get(i).toString());
+              for (int i = 0; i < Product.eyewear.size(); i++) System.out.println(Product.eyewear.get(i).getProductName());
             case 4:
-              for (int i = 0; i < Product.other.size(); i++) System.out.println(Product.other.get(i).toString());
-              subInputScanner.close();
+              for (int i = 0; i < Product.other.size(); i++) System.out.println(Product.other.get(i).getProductName());
+
+
+
+
             break;
           }
         case 3:
+          inputScanner.nextInt();
           Shop.checkLowStock();
           break;
         case 4:
