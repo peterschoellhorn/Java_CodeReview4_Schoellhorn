@@ -58,12 +58,13 @@ public class Main {
   }
 
 
-  public static void main(String[] args) {
+  public static void main(String[] args) throws StockLimitReachedException {
 
     createProductDatabase();
     createCustomerDatabase();
-
-
+    UserInterface inteface=new UserInterface();
+    inteface.userInterface(productDatabase,Shop.inventory,
+        User.purchaseHistory);
 }}
 
 

@@ -10,7 +10,7 @@ public class User {
   private int zip;
   private String city;
   private String phone;
-  public ArrayList<Product> purchaseHistory;
+  public static ArrayList<Product> purchaseHistory;
 
   public User user;
   private static int tempId = 100;
@@ -97,7 +97,7 @@ public class User {
   }
 
   public void setPurchaseHistory( ArrayList<Product> purchaseHistory ) {
-    this.purchaseHistory = purchaseHistory;
+    User.purchaseHistory = purchaseHistory;
   }
 
 
@@ -121,7 +121,7 @@ public class User {
   public static void purchase( int userId, int itemId, int amount ) {
     User customer=Main.customerDatabase.get(userId);
     Product product = Main.productDatabase.get(itemId);
-    customer.purchaseHistory.add(product);
+    purchaseHistory.add(product);
 
     if ((Shop.getInventory().get(product) - amount) <= 0)
       throw new ArithmeticException("SORRY, OUT OF STOCK");

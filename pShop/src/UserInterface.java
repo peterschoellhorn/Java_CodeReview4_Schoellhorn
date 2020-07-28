@@ -6,7 +6,7 @@ public class UserInterface {
 
 
   public void userInterface( HashMap<Integer, Product> productDatabase, HashMap<Product, Integer> inventory,
-                        ArrayList<Product>purchaseHistory,Product Category) throws StockLimitReachedException {
+                        ArrayList<Product>purchaseHistory) throws StockLimitReachedException {
 
     String menu =
 
@@ -95,7 +95,7 @@ public class UserInterface {
           System.out.println(subMenu);
           inputScanner=new Scanner(System.in);
           int subInput = inputScanner.nextInt();
-          switch (input) {
+          switch (subInput) {
             case 1:
               System.out.println(Product.Category.CLOTHES.toString());
             case 2:
