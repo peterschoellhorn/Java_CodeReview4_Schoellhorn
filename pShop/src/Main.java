@@ -62,12 +62,12 @@ public class Main {
   }
 
 
-  public static void main(String[] args){
+  public static void main(String[] args) throws StockLimitReachedException {
 
     Main.createProductDatabase();
     Main.createCustomerDatabase();
-    new UserInterface();
-}}
+    UserInterface.userInterface();
+  }}
 
 
 

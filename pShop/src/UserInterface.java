@@ -5,7 +5,7 @@ public class UserInterface {
 
 
 
-  public void userInterface() throws StockLimitReachedException {
+  public static void userInterface() throws StockLimitReachedException {
 
     String menu =
 
@@ -152,7 +152,7 @@ public class UserInterface {
           String eMail = inputScanner.nextLine();
           System.out.println("|PLEASE ENTER STREET OF CUSTOMER PRESS ENTER| \n");
           String address = inputScanner.nextLine();
-          System.out.println("|PLEASE ENTER ZIP CODE OF CUSTOMER PRESS ENTER| \n");
+          System.out.print("|PLEASE ENTER ZIP CODE OF CUSTOMER PRESS ENTER| \n");
           int zip = inputScanner.nextInt();
           System.out.println("|PLEASE ENTER CITY OF CUSTOMER PRESS ENTER| \n");
           String city = inputScanner.nextLine();
