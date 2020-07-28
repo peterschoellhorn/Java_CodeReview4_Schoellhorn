@@ -1,5 +1,4 @@
-import java.lang.reflect.Array;
-import java.util.*;
+import java.util.Scanner;
 
 public class UserInterface {
 
@@ -74,7 +73,8 @@ public class UserInterface {
     while (toContinue) {
       System.out.println(menu);
       Scanner inputScanner = new Scanner(System.in);
-      int input = inputScanner.nextInt();
+      int input;
+      input = inputScanner.nextInt();
       switch (input) {
         case 0:
           System.out.println("PROGRAM CLOSED");
@@ -85,7 +85,6 @@ public class UserInterface {
           for (int i : Main.productDatabase.keySet()) {
             String pr =Main.productDatabase.get(i).getProductName();
             System.out.println("*" + pr + "\n");
-            inputScanner.close();
           }
           break;
         case 2:
@@ -94,8 +93,8 @@ public class UserInterface {
           int EYEWEAR = 3;
           int OTHER = 4;
           System.out.println(subMenu);
-          inputScanner=new Scanner(System.in);
-          int subInput = inputScanner.nextInt();
+          Scanner subInputScanner=new Scanner(System.in);
+          int subInput = subInputScanner.nextInt();
           switch (subInput) {
             case 1:
               for (int i = 0; i < Product.clothes.size(); i++) System.out.println(Product.clothes.get(i).toString());
@@ -105,7 +104,7 @@ public class UserInterface {
               for (int i = 0; i < Product.eyewear.size(); i++) System.out.println(Product.eyewear.get(i).toString());
             case 4:
               for (int i = 0; i < Product.other.size(); i++) System.out.println(Product.other.get(i).toString());
-            inputScanner.close();
+              subInputScanner.close();
             break;
           }
         case 3:
@@ -127,7 +126,7 @@ public class UserInterface {
             new Product(productName,productDescription,productPrice,
               (Product.Category.valueOf(productCategory)));// parsing string into enum for constructor arg.
           System.out.println("|| PRODUCT SUCCESSFULLY ADDED :) ||\n");
-          inputScanner.close();
+
           break;
         case 6:
           System.out.println("|| ADD A PRODUCT FROM DATABASE TO YOUR SHOP INVENTORY ||\n");
@@ -139,7 +138,7 @@ public class UserInterface {
           System.out.println("(PLEASE NOTE: MAX SPACE PER ITEM IS 15)\n");
           int quantity = inputScanner.nextInt();
             Shop.addtoInventory(id, quantity);
-          inputScanner.close();
+
           break;
 
         case 7:
@@ -159,7 +158,7 @@ public class UserInterface {
           System.out.println("|PLEASE ENTER PHONE NO. OF CUSTOMER PRESS ENTER| \n");
           String phone = inputScanner.nextLine();
             User.createUser(firstName,lastName,eMail,address,zip,city,phone);
-          inputScanner.close();
+
           break;
         case 8:
           System.out.println("|PURCHASE HISTORY LOG (ALSO PRINTED TO FILE IN YOUR C:/ MAIN DIR| \n");
@@ -169,7 +168,7 @@ public class UserInterface {
           int userId = inputScanner.nextInt();
           PrintReport.displayOrderHistory(userId);
           PrintReport.printReport(userId);
-          inputScanner.close();
+
           break;
         case 9:
           System.out.println("|ADD PURCHASE| \n");

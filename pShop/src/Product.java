@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 public class Product {
 
-  private int productId=0;
+  private final int productId;
   private String productName;
   private String productDescription;
   private double productPrice;
@@ -10,13 +10,21 @@ public class Product {
   private final Category productCategory;
   private static int tempId = 0;
 
-  public static ArrayList<Product> clothes=new ArrayList<>();
-  public static ArrayList<Product> shoes=new ArrayList<>();
-  public static ArrayList<Product> eyewear=new ArrayList<>();
-  public static ArrayList<Product> other=new ArrayList<>();
+  public static ArrayList<Product> clothes;
+  public static ArrayList<Product> shoes;
+  public static ArrayList<Product> eyewear;
+  public static ArrayList<Product> other;
 
 
   public enum Category {CLOTHES,SHOES,EYEWEAR,OTHER}
+
+  public static void createSortArrays() {
+
+    clothes = new ArrayList<>();
+    shoes = new ArrayList<>();
+    eyewear = new ArrayList<>();
+    other = new ArrayList<>();
+  }
 
 //  constructor
 

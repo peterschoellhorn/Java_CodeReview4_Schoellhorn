@@ -5,7 +5,7 @@ public class Main {
 
   public static HashMap<Integer, User> customerDatabase;
   public static HashMap<Integer, Product> productDatabase;
-  public static ArrayList<Product> clothes;
+
 
 
 
@@ -13,7 +13,7 @@ public class Main {
 
   public static void createProductDatabase() {
     productDatabase = new HashMap<>();
-    clothes=new ArrayList<>();
+
     Product tshirt =
         new Product("T-SHIRT PLAIN UNISIZE", "white tshirt, v-neck, 100% cotton, plain white, unisize", 19.90,
             Product.Category.CLOTHES);
@@ -60,7 +60,6 @@ public class Main {
     customerDatabase.put(user2.getUserId(),user2);
 
   }
-
 
   public static void main(String[] args) throws StockLimitReachedException {
 
