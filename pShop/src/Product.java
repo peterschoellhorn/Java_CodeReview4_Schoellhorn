@@ -7,7 +7,7 @@ public class Product {
   private String productDescription;
   private double productPrice;
   private Integer inStock;
-  private final Category productCategory;
+  public Category productCategory;
   private static int tempId = 0;
 
   public static ArrayList<Product> clothes;
@@ -28,8 +28,7 @@ public class Product {
 
 //  constructor
 
-  public Product(String productName, String productDescription, double productPrice,
-                 Category productCategory) {
+  public Product(String productName, String productDescription, double productPrice, Category productCategory) {
 
 
     this.productId=(++tempId);
@@ -38,10 +37,10 @@ public class Product {
     this.productPrice = productPrice;
     this.productCategory=productCategory;
 
-    if (this.productCategory==Product.Category.CLOTHES) {clothes.add(this);}
-    if (this.productCategory==Product.Category.SHOES)   {shoes.add(this);}
-    if (this.productCategory==Product.Category.EYEWEAR) {eyewear.add(this);}
-    if (this.productCategory==Product.Category.OTHER)   {other.add(this);}
+    if (this.productCategory==Category.CLOTHES) {clothes.add(this);}
+    if (this.productCategory==Category.SHOES)   {shoes.add(this);}
+    if (this.productCategory==Category.EYEWEAR) {eyewear.add(this);}
+    if (this.productCategory==Category.OTHER)   {other.add(this);}
 
     Main.productDatabase.put(this.productId, this); // putting obj directly into hashmap without needing a refernece VAR
   }
