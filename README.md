@@ -1,3 +1,6 @@
 # shop-backend-cli-with-arrayListStorageSystem-insteadOf-inMemDB
 
-noob craziness per excellence;)
+
+¯\_(ツ)_/¯
+
+yolo ;)
